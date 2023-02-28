@@ -1,4 +1,5 @@
 var key = "13e05e959b2f9c3e9ce652c35b101c08"
+var city = 
 
 function getWeather (city){
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=` + city + `&appid=` + key)
@@ -12,3 +13,6 @@ function getWeather (city){
 
 // add event listener for search button to grab value in input and set it to variable called city, then call getWeather passing city
 getWeather(city)
+
+// city name, date, icon, temperature, humidity, wind speed 
+
