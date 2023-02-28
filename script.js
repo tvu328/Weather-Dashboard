@@ -1,5 +1,5 @@
 var key = "13e05e959b2f9c3e9ce652c35b101c08"
-var city = 
+var city = "Seattle"
 
 function getWeather (city){
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=` + city + `&appid=` + key)
