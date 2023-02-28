@@ -1,0 +1,67 @@
+body {
+    background: rgb(83, 114, 122);
+    margin-left: 10em;
+    margin-right: 10em;
+}
+
+body h1 {
+    color: white;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.upper {
+    display: flex;
+}
+
+.search {
+    margin-right: 2em;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 6px 10px -4px rgba(0,0,0,0.75);
+}
+
+.search button {
+    border: none;
+    color: white;
+    background-color: rgb(83,114,122);
+    border-radius: 4px;
+    margin-left: 5px;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.025);
+    transition: .5s;
+}
+
+.searchBar {
+    display: flex;
+}
+
+
+.current {
+    color: black;
+    background: white;
+    width: 50%;
+    height: 25vh;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 5px 6px 10px -4px rgba(0,0,0,0.75);
+}
+
+.forecast {
+    display: flex;
+    margin-top: 3em;
+    justify-content: space-between;
+}
+
+.forecastCard {
+    width: 19%;
+    height: 30vh;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 5px 6px 10px -4px rgba(0,0,0,0.75);
+}
