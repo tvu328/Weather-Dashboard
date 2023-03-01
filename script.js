@@ -36,8 +36,21 @@ function displayWeather(data) {
     let imageEl = document.createElement("img");
     imageEl.setAttribute("src", icon);
     imageEl.setAttribute("alt", desc);
-        cityEl.textContent = `${cityText}  ${date}`;
-        cityEl.append(imageEl);
+    cityEl.textContent = `${cityText}  ${date}`;
+    cityEl.append(imageEl);
+
+    let tempEl = document.getElementById("temp");
+    let humidityEl = document.getElementById("humidity");
+    let windEl = document.getElementById("wind");
+
+    let temp = data.list[0].main.temp;
+    let humidity = data.list[0].main.humidity;
+    let wind = data.list[0].wind.speed;
+
+    tempEl.textContent = `Temp: ${temp} F`;
+    humidityEl.textContent = `Humidity: ${humidity} %`;
+    windEl.textContent = `Wind: ${wind} MPH`;
+
 
 }
 searchButtonEl.addEventListener("click", function (event) {
