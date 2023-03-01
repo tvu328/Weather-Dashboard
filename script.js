@@ -4,6 +4,7 @@ var searchButtonEl = document.querySelector("#searchBtn")
 var searchInputEl = document.querySelector("#cityName")
 var lat;
 var lon;
+var history = document.querySelector(".search-list")
 
 function getWeather(city) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=` + city + `&appid=` + key)
@@ -80,9 +81,29 @@ function displayForecast(data) {
         windEl.textContent = `Wind: ${wind} MPH`;
     }
 }
+
+function searchHistory(){
+    var previousSearch = JSON.parse(localStorage.getItem("weatherapi"))||[]
+    var htmlString = ""
+    for (let index = 0; index < previousSearch.length; index++) {
+        // const element = document.createElement("li");
+        // element.textContent = previousSearch[index]
+        // history.appendChild(element)
+     console.log("history")
+        htmlString += `<li>${previousSearch[index]}</li>`
+    }
+    console.log(htmlString)
+    history.innerHTML = htmlString
+}
+
 searchButtonEl.addEventListener("click", function (event) {
     event.preventDefault()
     var search = searchInputEl.value.trim()
     city = search;
+    var previousSearch = JSON.parse(localStorage.getItem("weatherapi"))||[]
+    previousSearch.push(city)
+    localStorage.setItem("weatherapi", JSON.stringify(previousSearch))
     getWeather(search)
 })
+
+searchHistory()
