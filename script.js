@@ -33,8 +33,11 @@ function displayWeather(data) {
     let date = data.list[0].dt_txt.split(" ")[0];
     let icon = `https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`;
     let desc = data.list[0].weather[0].description;
-
+    let imageEl = document.createElement("img");
+    imageEl.setAttribute("src", icon);
+    imageEl.setAttribute("alt", desc);
         cityEl.textContent = `${cityText}  ${date}`;
+        cityEl.append(imageEl);
 
 }
 searchButtonEl.addEventListener("click", function (event) {
