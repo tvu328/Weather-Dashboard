@@ -51,7 +51,11 @@ function displayWeather(data) {
     humidityEl.textContent = `Humidity: ${humidity} %`;
     windEl.textContent = `Wind: ${wind} MPH`;
 
+    displayForecast();
+}
 
+function displayForecast(){
+    
 }
 searchButtonEl.addEventListener("click", function (event) {
     event.preventDefault()
