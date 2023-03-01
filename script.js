@@ -47,7 +47,7 @@ function displayWeather(data) {
     let humidity = data.list[0].main.humidity;
     let wind = data.list[0].wind.speed;
 
-    tempEl.textContent = `Temp: ${temp} F`;
+    tempEl.textContent = `Temp: ${temp} °`;
     humidityEl.textContent = `Humidity: ${humidity} %`;
     windEl.textContent = `Wind: ${wind} MPH`;
 
@@ -66,10 +66,15 @@ function displayForecast(data) {
         let tempEl = document.getElementById(`temp-${i}`);
         let humidityEl = document.getElementById(`humidity-${i}`);
         let windEl = document.getElementById(`wind-${i}`);
+        // let icon = `https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`;
+        // let desc = data.list[0].weather[0].description;
+        // let imageEl = document.createElement("img");
+        // imageEl.setAttribute("src", icon);
+        // imageEl.setAttribute("alt", desc);
         i += 1;
 
         dateEl.textContent = date;
-        tempEl.textContent = `Temp: ${temp} F`;
+        tempEl.textContent = `Temp: ${temp} °`;
         humidityEl.textContent = `Humidity: ${humidity} %`;
         windEl.textContent = `Wind: ${wind} MPH`;
     }
