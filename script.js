@@ -18,7 +18,7 @@ function getWeather(city) {
         })
 }
 function getWeatherPlusForecast(city, lat, lon) {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}&units=imperial`)
         .then((res) => {
             return res.json()
         })
