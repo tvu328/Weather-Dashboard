@@ -51,11 +51,28 @@ function displayWeather(data) {
     humidityEl.textContent = `Humidity: ${humidity} %`;
     windEl.textContent = `Wind: ${wind} MPH`;
 
-    displayForecast();
+    displayForecast(data);
 }
 
-function displayForecast(){
-    
+function displayForecast(data) {
+    let i = 1;
+    for (let index = 0; index < data.list.length; index += 8) {
+        const element = data.list[index];
+        let date = element.dt_txt.split(" ")[0];
+        let temp = element.main.temp;
+        let humidity = element.main.humidity;
+        let wind = element.wind.speed;
+        let dateEl = document.getElementById(`date-${i}`);
+        let tempEl = document.getElementById(`temp-${i}`);
+        let humidityEl = document.getElementById(`humidity-${i}`);
+        let windEl = document.getElementById(`wind-${i}`);
+        i += 1;
+
+        dateEl.textContent = date;
+        tempEl.textContent = `Temp: ${temp} F`;
+        humidityEl.textContent = `Humidity: ${humidity} %`;
+        windEl.textContent = `Wind: ${wind} MPH`;
+    }
 }
 searchButtonEl.addEventListener("click", function (event) {
     event.preventDefault()
