@@ -7,6 +7,5 @@ This was made to utilize a server-side API. This was built to retrieve a 5 day w
 One step needed to get this app running is to utilize the OpenWeather API.
 
 ## Usage
-screenshot
-
+https://tvu328.github.io/Weather-Dashboard/
 
