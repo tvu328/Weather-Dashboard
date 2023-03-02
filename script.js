@@ -4,7 +4,7 @@ var searchButtonEl = document.querySelector("#searchBtn")
 var searchInputEl = document.querySelector("#cityName")
 var lat;
 var lon;
-var history = document.querySelector(".search-list")
+var historyUl = document.querySelector("#history")
 
 function getWeather(city) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=` + city + `&appid=` + key)
@@ -30,14 +30,13 @@ function getWeatherPlusForecast(city, lat, lon) {
 }
 function displayWeather(data) {
     let cityEl = document.getElementById("city");
-    let cityText = city;
     let date = data.list[0].dt_txt.split(" ")[0];
     let icon = `https://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png`;
     let desc = data.list[0].weather[0].description;
     let imageEl = document.createElement("img");
     imageEl.setAttribute("src", icon);
     imageEl.setAttribute("alt", desc);
-    cityEl.textContent = `${cityText}  ${date}`;
+    cityEl.textContent = `${data.city.name}  ${date}`;
     cityEl.append(imageEl);
 
     let tempEl = document.getElementById("temp");
@@ -82,28 +81,30 @@ function displayForecast(data) {
     }
 }
 
-function searchHistory(){
-    var previousSearch = JSON.parse(localStorage.getItem("weatherapi"))||[]
-    var htmlString = ""
+function searchHistory() {
+    var previousSearch = JSON.parse(localStorage.getItem("weatherapi")) || []
     for (let index = 0; index < previousSearch.length; index++) {
-        // const element = document.createElement("li");
-        // element.textContent = previousSearch[index]
-        // history.appendChild(element)
-     console.log("history")
-        htmlString += `<li>${previousSearch[index]}</li>`
+        const element = document.createElement("li");
+        element.innerHTML = previousSearch[index]
+        console.log(previousSearch[index])
+        historyUl.append(element)
+        element.addEventListener("click", function (event) {
+            let clicked = event.target.innerHTML;
+            getWeather(clicked)
+        })
+        console.log("history")
+
     }
-    console.log(htmlString)
-    history.innerHTML = htmlString
+    // history.innerHTML = htmlString
 }
 
 searchButtonEl.addEventListener("click", function (event) {
     event.preventDefault()
     var search = searchInputEl.value.trim()
     city = search;
-    var previousSearch = JSON.parse(localStorage.getItem("weatherapi"))||[]
+    var previousSearch = JSON.parse(localStorage.getItem("weatherapi")) || []
     previousSearch.push(city)
     localStorage.setItem("weatherapi", JSON.stringify(previousSearch))
     getWeather(search)
+    searchHistory()
 })
-
-searchHistory()
